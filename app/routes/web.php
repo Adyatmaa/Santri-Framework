@@ -27,6 +27,8 @@ Route::get('tashih', [AdminController::class, 'pageTashih'])->name('pageTashih')
 Route::get('ustadz', [AdminController::class, 'pageUstadz'])->name('pageUstadz');
 Route::get('mahasantri', [AdminController::class, 'pageSantri'])->name('pageSantri');
 
+Route::get('add-talim', [AdminController::class, 'pageAddTalim'])->name('pageAddTalim');
+
 Route::get('dashboards', [PageController::class, 'dashboardS'])->name('dashboardS');
 
 Route::get('santri-talim', [SantriController::class, 'pageTalim'])->name('santri.pageTalim');
