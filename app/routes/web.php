@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('sign-up', [PageController::class, 'signUp'])->name('signUp');
+Route::post('signin-up', [PageController::class, 'isSignUp'])->name('isSignUp');
 
 Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 

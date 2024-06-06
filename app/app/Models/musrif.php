@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class musrif extends Model
 {
     use HasFactory;
-    protected $table = 'musrif';
+    protected $table = 'musrifs';
 
     protected $fillable = [
         'nim',
         'nama',
-        'mabna'
+        'mabna',
+        'log_on_id',
     ];
 }

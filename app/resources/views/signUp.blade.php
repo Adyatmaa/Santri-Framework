@@ -16,38 +16,40 @@
                     class="h-52 w-full object-cover lg:w-3/5 lg:h-screen">
                 <div class="flex flex-col items-center justify-center my-6 lg:mx-auto">
                     <div class="text-center w-[80%] lg:w-full">
-                        <h1 class="text-3xl font-bold mb-1 lg:mb-4 lg:text-5xl">Welcome Back!</h1>
+                        <h1 class="text-3xl font-bold mb-1 lg:mb-4 lg:text-5xl">Welcome Here!</h1>
                         <p class="text-xs font-medium text-gray-500 lg:text-sm">
                             Buat akun anda disini!
                         </p>
-                        <form action="" class="pt-10">
+                        <form action="{{ route('isSignUp') }}" method="POST" class="pt-10">
+                            @csrf
+                            @method('POST')
                             <div class="mb-5">
-                                <input type="text" id="first_name"
+                                <input type="text" id="username" name="username"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Username" required />
                             </div>
                             <div class="mb-5">
-                                <input type="password" id="password"
+                                <input type="password" id="password" name="password"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Password" required />
                             </div>
                             <div class="mb-5">
-                                <input type="text" id="name"
+                                <input type="text" id="nama" name="nama"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Name" required />
+                                    placeholder="Nama" required />
                             </div>
                             <div class="mb-5">
-                                <input type="text" id="nim"
+                                <input type="text" id="nim" name="nim"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="NIM" required />
                             </div>
                             <div class="mb-5">
-                                <input type="text" id="mabna"
+                                <input type="text" id="mabna" name="mabna"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Nama Mabna" required />
                             </div>
                             <div class="mb-5">
-                                <select id="countries"
+                                <select id="role_id" name="role_id"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option selected>Choose a role</option>
                                     <option value="0">Musrif</option>
@@ -55,8 +57,10 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <button type="button"
-                                    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 w-full me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Login</button>
+                                <button type="submit"
+                                    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 w-full me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                                    Sign Up
+                                </button>
                             </div>
                             <div class="mb-3">
                                 <h1 class="text-xs font-semibold">OR</h1>
@@ -81,7 +85,8 @@
                                         class="relative inline-flex items-center justify-center w-full p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"><span
                                             class="relative p-2 w-full transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                             Santri
-                                        </span></a>
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                         </form>
