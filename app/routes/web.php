@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('sign-up', [PageController::class, 'signUp'])->name('signUp');
+
 Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
 Route::get('talim', [AdminController::class, 'pageTalim'])->name('pageTalim');

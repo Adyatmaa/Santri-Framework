@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class santri extends Model
+class userLogon extends Model
 {
     use HasFactory;
-    protected $table = 'santri';
+    protected $table = 'user_log_on';
 
     protected $fillable = [
-        'nim',
+        'username',
         'nama',
-        'mabna',
-        'log_on_id',
+        'password',
+        'role_id',
     ];
 }
