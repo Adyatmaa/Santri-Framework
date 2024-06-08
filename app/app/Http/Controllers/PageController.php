@@ -8,6 +8,8 @@ use App\Models\userLogon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use function Laravel\Prompts\select;
+
 class PageController extends Controller
 {
     public function dashboard()
@@ -54,5 +56,16 @@ class PageController extends Controller
         }
 
         return redirect('/')->with('register', 'Akun berhasil dibuat, silahkan login ke aplikasi');
+    }
+
+    public function loggingIn(Request $request)
+    {
+        $logon = userLogon::select();
+
+        // $logon->username = $request->username;
+
+        dd($logon);
+
+
     }
 }

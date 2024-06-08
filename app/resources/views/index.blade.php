@@ -20,19 +20,21 @@
                         <p class="text-xs font-medium text-gray-500 lg:text-sm">Silahkan login terlebih dahulu, atau
                             login
                             sebagai admin</p>
-                        <form action="" class="pt-10">
+                        <form action="{{ route('loggingIn') }}" method="POST" class="pt-10">
+                            @csrf
+                            @method('POST')
                             <div class="mb-5">
-                                <input type="text" id="first_name"
+                                <input type="text" id="username" name="username"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Username" required />
                             </div>
                             <div class="mb-5">
-                                <input type="password" id="password"
+                                <input type="password" id="password" name="password"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Password" required />
                             </div>
                             <div class="mb-3">
-                                <button type="button"
+                                <button type="submit"
                                     class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 w-full me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Login</button>
                             </div>
                             <div class="mb-3">
