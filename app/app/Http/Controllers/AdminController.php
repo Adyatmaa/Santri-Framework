@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jadwal;
 use App\Models\kegiatan;
 use App\Models\musrif;
 use App\Models\santri;
@@ -70,6 +71,43 @@ class AdminController extends Controller
     public function delKegiatan($id)
     {
         $record = kegiatan::findOrFail($id);
+        $record->delete();
+        return back();
+    }
+
+    public function pageJadwal()
+    {
+        $record = jadwal::with('kegiatan', 'musrif', 'ustadz')->get();
+        // dd($record);
+        return view('admin.jadwal', compact('record'));
+    }
+
+    public function inputJadwal()
+    {
+        $ustad = ustadz::all();
+        $musrif = musrif::all();
+        $kegiatan = kegiatan::all();
+        return view('admin.form.addJadwal', compact(['ustad', 'musrif', 'kegiatan']));
+    }
+
+    public function inputingJadwal(Request $request)
+    {
+        $record = new jadwal();
+
+        $record->kegiatan_id = $request->kegiatan;
+        $record->ustadz_id = $request->ustad;
+        $record->musrif_id = $request->musrif;
+        $record->kelas = $request->kelas;
+        $record->ruang = $request->ruang;
+        $record->waktu = $request->waktu;
+
+        $record->save();
+        return redirect('jadwal');
+    }
+
+    public function delJadwal($id)
+    {
+        $record = jadwal::findOrFail($id);
         $record->delete();
         return back();
     }

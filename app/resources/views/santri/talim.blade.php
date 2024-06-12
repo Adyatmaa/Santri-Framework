@@ -3,7 +3,7 @@
     <!-- Header-->
     <section>
         <div class="container mb-6">
-            <h5 class="text-xl font-bold dark:text-white">Jadwal Ta'lim</h5>
+            <h5 class="text-xl font-bold dark:text-white">Jadwal</h5>
         </div>
     </section>
 

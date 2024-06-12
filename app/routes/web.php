@@ -28,10 +28,6 @@ Route::post('logging-in', [PageController::class, 'loggingIn'])->name('loggingIn
 // admin musrif
 Route::group(['middleware' => 'checkrole:0'], function () {
     Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-
-    Route::get('talim', [AdminController::class, 'pageTalim'])->name('pageTalim');
-
-    Route::get('tashih', [AdminController::class, 'pageTashih'])->name('pageTashih');
     
     Route::get('mahasantri', [AdminController::class, 'pageSantri'])->name('pageSantri');
     
@@ -44,6 +40,12 @@ Route::group(['middleware' => 'checkrole:0'], function () {
     Route::get('kegiatan', [AdminController::class, 'pageKegiatan'])->name('pageKegiatan');
     Route::post('add-kegiatan', [AdminController::class, 'addKegiatan'])->name('addKegiatan');
     Route::delete('delete-kegiatan/{id}', [AdminController::class, 'delKegiatan'])->name('delKegiatan');
+
+    Route::get('jadwal', [AdminController::class, 'pageJadwal'])->name('pageJadwal');
+    Route::get('add-jadwal', [AdminController::class, 'inputJadwal'])->name('inputJadwal');
+    Route::post('adding-jadwal', [AdminController::class, 'inputingJadwal'])->name('inputingJadwal');
+    // Route::post('adding-jadwal', [AdminController::class, 'inputingJadwal'])->name('inputingJadwal');
+    Route::delete('delete-jadwal/{id}', [AdminController::class, 'delJadwal'])->name('delJadwal');
 
     Route::get('add-talim', [AdminController::class, 'pageAddTalim'])->name('pageAddTalim');
 
