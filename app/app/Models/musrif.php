@@ -14,6 +14,10 @@ class musrif extends Model
         'nim',
         'nama',
         'mabna',
-        'log_on_id',
     ];
+
+    public function jadwal()
+    {
+        return $this->hasMany(jadwal::class);
+    }
 }

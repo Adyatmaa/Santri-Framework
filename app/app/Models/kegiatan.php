@@ -13,4 +13,9 @@ class kegiatan extends Model
     protected $fillable = [
         'nama',
     ];
+
+    public function jadwal()
+    {
+        return $this->hasMany(jadwal::class);
+    }
 }

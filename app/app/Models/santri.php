@@ -14,6 +14,10 @@ class santri extends Model
         'nim',
         'nama',
         'mabna',
-        'log_on_id',
     ];
+
+    public function absen()
+    {
+        return $this->hasMany(absen::class);
+    }
 }
