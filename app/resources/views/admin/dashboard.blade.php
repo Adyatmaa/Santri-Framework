@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <div class="">
-            <p>Howdy, admin</p>
+            <p>Howdy, {{ auth()->user()->nama }}</p>
         </div>
     </section>
 @endsection

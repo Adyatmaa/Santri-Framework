@@ -12,7 +12,5 @@ class kegiatan extends Model
 
     protected $fillable = [
         'nama',
-        'jam',
-        'hari',
     ];
 }

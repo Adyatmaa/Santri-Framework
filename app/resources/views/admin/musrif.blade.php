@@ -3,8 +3,8 @@
     <!-- Header-->
     <section>
         <div class="container mb-6">
-            <h5 class="text-xl mb-8 font-bold dark:text-white">Daftar Ustadz</h5>
-            <form class="flex items-center w-auto mx-auto" method="POST" action="{{ route('addUstadz') }}">
+            <h5 class="text-xl mb-8 font-bold dark:text-white">Daftar Musrif</h5>
+            {{-- <form class="flex items-center w-auto mx-auto" method="POST" action="{{ route('addUstadz') }}">
                 @csrf
                 <div class="relative w-full">
                     <input type="text" id="nama" name="nama"
@@ -15,7 +15,7 @@
                     class="inline-flex items-center w-auto py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Tambah
                 </button>
-            </form>
+            </form> --}}
         </div>
     </section>
 
@@ -28,9 +28,19 @@
                         <th scope="col" class="px-6 py-3">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3 w-5/12">
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                NIM
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
                                 Nama
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
+                                Mabna
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -53,12 +63,18 @@
                             {{ $no++ }}
                         </th>
                         <td class="px-6 py-4">
+                            {{ $row->nim }}
+                        </td>
+                        <td class="px-6 py-4">
                             {{ $row->nama }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $row->mabna }}
                         </td>
                         <td class="flex px-6 py-4">
                             <a href="#"
                                 class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline">Edit</a>
-                            <form action="{{ route('delUstadz', ['id' => $row->id]) }}" method="POST">
+                            <form action="" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="font-medium text-red-600 dark:text-red-500 hover:underline">

@@ -2,15 +2,20 @@
 @section('content')
     <!-- Header-->
     <section>
-        <div class="container mb-6">
-            <h5 class="text-xl font-bold mb-8 dark:text-white">Daftar Mahasantri</h5>
-            {{-- <form action="">
+        <div class="container mb-8">
+            <h5 class="text-xl mb-8 font-bold dark:text-white">List Kegiatan Mahad</h5>
+            <form class="flex items-center w-auto mx-auto" method="POST" action="{{ route('addKegiatan') }}">
                 @csrf
-                <button type="button"
-                    class="focus:outline-none text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    Tambah Mahasantri
+                <div class="relative w-full">
+                    <input type="text" id="kegiatan" name="kegiatan"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Tambah Kegiatan" required />
+                </div>
+                <button type="submit"
+                    class="inline-flex items-center w-auto py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Tambah
                 </button>
-            </form> --}}
+            </form>
         </div>
     </section>
 
@@ -20,26 +25,16 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3 w-1/12">
+                        <th scope="col" class="px-6 py-3">
                             No
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Nim
+                                Nama Kegiatan
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Nama
-                            </div>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Mabna
-                            </div>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <div class="flex items-right">
                                 Aksi
                             </div>
                         </th>
@@ -60,18 +55,12 @@
                                 {{ $no++ }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $row->nim }}
-                            </td>
-                            <td class="px-6 py-4">
                                 {{ $row->nama }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $row->mabna }}
                             </td>
                             <td class="flex px-6 py-4">
                                 <a href="#"
                                     class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline">Edit</a>
-                                <form action="" method="POST">
+                                <form action="{{ route('delKegiatan', ['id' => $row->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="font-medium text-red-600 dark:text-red-500 hover:underline">
