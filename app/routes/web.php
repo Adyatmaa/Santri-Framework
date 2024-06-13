@@ -35,20 +35,19 @@ Route::group(['middleware' => 'checkrole:0'], function () {
     
     Route::get('ustadz', [AdminController::class, 'pageUstadz'])->name('pageUstadz');
     Route::post('add-ustadz', [AdminController::class, 'addUstadz'])->name('addUstadz');
+    Route::put('edit-ustadz/{id}', [AdminController::class, 'updateUstadz'])->name('updateUstadz');
     Route::delete('delete-ustadz/{id}', [AdminController::class, 'delUstadz'])->name('delUstadz');
     
     Route::get('kegiatan', [AdminController::class, 'pageKegiatan'])->name('pageKegiatan');
     Route::post('add-kegiatan', [AdminController::class, 'addKegiatan'])->name('addKegiatan');
+    Route::put('edit-kegiatan/{id}', [AdminController::class, 'updateKegiatan'])->name('updateKegiatan');
     Route::delete('delete-kegiatan/{id}', [AdminController::class, 'delKegiatan'])->name('delKegiatan');
 
     Route::get('jadwal', [AdminController::class, 'pageJadwal'])->name('pageJadwal');
     Route::get('add-jadwal', [AdminController::class, 'inputJadwal'])->name('inputJadwal');
     Route::post('adding-jadwal', [AdminController::class, 'inputingJadwal'])->name('inputingJadwal');
-    // Route::post('adding-jadwal', [AdminController::class, 'inputingJadwal'])->name('inputingJadwal');
+    Route::put('edit-jadwal/{id}', [AdminController::class, 'updateJadwal'])->name('updateJadwal');
     Route::delete('delete-jadwal/{id}', [AdminController::class, 'delJadwal'])->name('delJadwal');
-
-    Route::get('add-talim', [AdminController::class, 'pageAddTalim'])->name('pageAddTalim');
-
 });
 
 // user santri

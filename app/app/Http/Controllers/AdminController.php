@@ -41,6 +41,19 @@ class AdminController extends Controller
         return back();
     }
 
+    public function updateUstadz(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required'
+        ]);
+
+        $record = ustadz::findOrFail($id);
+        $record->nama = $request->nama;
+        $record->save();
+
+        return back();
+    }
+
     public function delUstadz($id)
     {
         $record = ustadz::findOrFail($id);
@@ -68,6 +81,19 @@ class AdminController extends Controller
         return back();
     }
 
+    public function updateKegiatan(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required'
+        ]);
+
+        $record = kegiatan::findOrFail($id);
+        $record->nama = $request->nama;
+        $record->save();
+
+        return back();
+    }
+
     public function delKegiatan($id)
     {
         $record = kegiatan::findOrFail($id);
@@ -78,8 +104,11 @@ class AdminController extends Controller
     public function pageJadwal()
     {
         $record = jadwal::with('kegiatan', 'musrif', 'ustadz')->get();
+        $ustad = ustadz::all();
+        $musrif = musrif::all();
+        $kegiatan = kegiatan::all();
         // dd($record);
-        return view('admin.jadwal', compact('record'));
+        return view('admin.jadwal', compact('record', 'ustad', 'musrif', 'kegiatan'));
     }
 
     public function inputJadwal()
@@ -103,6 +132,30 @@ class AdminController extends Controller
 
         $record->save();
         return redirect('jadwal');
+    }
+
+    public function updateJadwal(Request $request, $id)
+    {
+        $data = $request->validate([
+            'kegiatan' => 'required',
+            'musrif' => 'required',
+            'ustad' => 'required',
+            'kelas' => 'required',
+            'ruang' => 'required',
+            'waktu' => 'required',
+        ]);
+
+        $record = jadwal::findOrFail($id);
+
+        $record->kegiatan_id = $data['kegiatan'];
+        $record->musrif_id = $data['musrif'];
+        $record->ustadz_id = $data['ustad'];
+        $record->kelas = $data['kelas'];
+        $record->ruang = $data['ruang'];
+        $record->waktu = $data['waktu'];
+        $record->save();
+
+        return back();
     }
 
     public function delJadwal($id)

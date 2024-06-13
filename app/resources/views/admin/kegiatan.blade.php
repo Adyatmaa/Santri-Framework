@@ -87,7 +87,7 @@
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Create New Product
+                            Update Kegiatan
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -101,18 +101,20 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form class="p-4 md:p-5">
+                    <form class="p-4 md:p-5" method="POST" action="">
                         @csrf
+                        @method('PUT')
                         <div class="grid gap-4 mb-4 grid-cols-2">
                             <div class="col-span-2">
-                                <label for="name"
+                                <label for="nama"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                                     Kegiatan</label>
-                                <input type="text" name="name" id="name"
+                                <input type="text" name="nama" id="nama"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="..." required="">
+                                    placeholder="" required="">
                             </div>
                         </div>
+                        <input type="hidden" name="id" id="id">
                         <button type="submit"
                             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Ubah Kegiatan
@@ -122,4 +124,23 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editButtons = document.querySelectorAll('[data-modal-toggle="edit-modal"]');
+
+            editButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var nama = button.getAttribute('data-nama');
+                    var id = button.getAttribute('data-id');
+
+                    var modal = document.getElementById('edit-modal');
+
+                    modal.querySelector('input[name="nama"]').value = nama;
+                    modal.querySelector('input[name="id"]').value = id;
+
+                    modal.querySelector('form').action = `edit-kegiatan/${id}`;
+                });
+            });
+        });
+    </script>
 @endsection

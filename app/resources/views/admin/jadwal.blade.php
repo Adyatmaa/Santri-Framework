@@ -74,7 +74,6 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->musrif->nama }}
-
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->kelas }}
@@ -89,7 +88,12 @@
                                 <button type="button"
                                     class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline"
                                     data-modal-target="edit-modal" data-modal-toggle="edit-modal"
-                                    data-modal-show="edit-modal">
+                                    data-modal-show="edit-modal" data-id="{{ $item->id }}"
+                                    data-kegiatan-id="{{ $item->kegiatan_id }}" data-kegiatan="{{ $item->kegiatan->nama }}"
+                                    data-musrif-id="{{ $item->musrif_id }}" data-musrif="{{ $item->musrif->nama }}"
+                                    data-ustadz-id="{{ $item->ustadz_id }}" data-ustadz="{{ $item->ustadz->nama }}"
+                                    data-kelas="{{ $item->kelas }}" data-ruang="{{ $item->ruang }}"
+                                    data-waktu="{{ $item->waktu }}">
                                     Edit
                                 </button>
                                 <form action="{{ route('delJadwal', ['id' => $item->id]) }}" method="POST">
@@ -113,12 +117,12 @@
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Create New Product
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Update Jadwal
                         </h3>
                         <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-toggle="edit-modal">
+                            class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="edit-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 14 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -128,56 +132,121 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form class="p-4 md:p-5">
-                        <div class="grid gap-4 mb-4 grid-cols-2">
-                            <div class="col-span-2">
-                                <label for="name"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                <input type="text" name="name" id="name"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Type product name" required="">
-                            </div>
-                            <div class="col-span-2 sm:col-span-1">
-                                <label for="price"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                                <input type="number" name="price" id="price"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="$2999" required="">
-                            </div>
-                            <div class="col-span-2 sm:col-span-1">
-                                <label for="category"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                <select id="category"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                    <option selected="">Select category</option>
-                                    <option value="TV">TV/Monitors</option>
-                                    <option value="PC">PC</option>
-                                    <option value="GA">Gaming/Console</option>
-                                    <option value="PH">Phones</option>
+                    <div class="p-4 md:p-5">
+                        <form class="space-y-4" action="#" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-5">
+                                <input type="text" name="id" id="id">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Nama Kegiatan
+                                </label>
+                                <select id="kegiatan" name="kegiatan"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    @foreach ($kegiatan as $rowk)
+                                        <option value="{{ $rowk->id }}">{{ $rowk->nama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="col-span-2">
-                                <label for="description"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
-                                    Description</label>
-                                <textarea id="description" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Write product description here"></textarea>
+                            <div class="mb-5">
+                                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Ustadz / Pemateri
+                                </label>
+                                <select id="ustad" name="ustad"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    @foreach ($ustad as $rowus)
+                                        <option value="{{ $rowus->id }}">{{ $rowus->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
-                        <button type="submit"
-                            class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            Add new product
-                        </button>
-                    </form>
+                            <div class="mb-5">
+                                <label for="countries"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Musrif Pendamping
+                                </label>
+                                <select id="musrif" name="musrif"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    @foreach ($musrif as $row)
+                                        <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-5">
+                                <label for="countries"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Kelas
+                                </label>
+                                <select id="kelas" name="kelas"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option>-</option>
+                                    <option>Asasi</option>
+                                    <option>Mutawasith</option>
+                                    <option>Al Aly</option>
+                                </select>
+                            </div>
+                            <div class="mb-5">
+                                <label for="ruang"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Ruang
+                                </label>
+                                <input type="text" id="ruang" name="ruang"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Ruang" required />
+                            </div>
+                            <div class="mb-5">
+                                <label for="waktu"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Waktu
+                                </label>
+                                <input type="text" id="waktu" name="waktu" autocomplete="off"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Jam" required />
+                            </div>
+                            <button type="submit"
+                                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Update Jadwal
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editButtons = document.querySelectorAll('[data-modal-toggle="edit-modal"]');
+
+            editButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var id = button.getAttribute('data-id');
+
+                    var kegiatan_id = button.getAttribute('data-kegiatan-id');
+
+                    var musrif_id = button.getAttribute('data-musrif-id');
+
+                    var ustadz_id = button.getAttribute('data-ustadz-id');
+
+                    var kelas = button.getAttribute('data-kelas');
+                    var ruang = button.getAttribute('data-ruang');
+                    var waktu = button.getAttribute('data-waktu');
+
+                    var modal = document.getElementById('edit-modal');
+
+                    modal.querySelector('input[name="id"]').value = id;
+
+                    modal.querySelector('select[name="kegiatan"]').value = kegiatan_id;
+
+                    modal.querySelector('select[name="musrif"]').value = musrif_id;
+
+                    modal.querySelector('select[name="ustad"]').value = ustadz_id;
+
+                    modal.querySelector('select[name="kelas"]').value = kelas;
+                    modal.querySelector('input[name="ruang"]').value = ruang;
+                    modal.querySelector('input[name="waktu"]').value = waktu;
+
+                    modal.querySelector('form').action = `edit-jadwal/${id}`;
+                });
+            });
+        });
+    </script>
 @endsection
