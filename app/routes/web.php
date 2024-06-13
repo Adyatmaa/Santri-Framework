@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('index', [PageController::class, 'index'])->name('index');
 Route::get('sign-up', [PageController::class, 'signUp'])->name('signUp');
 Route::post('signin-up', [PageController::class, 'isSignUp'])->name('isSignUp');
 Route::post('logging-in', [PageController::class, 'loggingIn'])->name('loggingIn');

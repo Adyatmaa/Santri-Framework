@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kegiatan_id');
             $table->unsignedBigInteger('ustadz_id');
-            $table->foreign('kegiatan_id')->references('id')->on('kegiatans');
-            $table->foreign('ustadz_id')->references('id')->on('ustadzs');
+            $table->foreign('kegiatan_id')->references('id')->on('kegiatans')->cascadeOnUpdate;
+            $table->foreign('ustadz_id')->references('id')->on('ustadzs')->cascadeOnUpdate;
             $table->string('kelas');
             $table->string('ruang');
             $table->string('waktu');

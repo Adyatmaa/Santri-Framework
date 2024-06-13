@@ -12,8 +12,6 @@
     <section>
         <div class="w-full">
             <div class="block lg:flex">
-                <img src="{{ asset('assets/poto/login.jpg') }}" alt="" srcset=""
-                    class="h-52 w-full object-cover lg:w-3/5 lg:h-screen">
                 <div class="flex flex-col items-center justify-center my-6 lg:mx-auto">
                     <div class="text-center w-[80%] lg:w-full">
                         <h1 class="text-3xl font-bold mb-1 lg:mb-4 lg:text-5xl">Welcome Here!</h1>
@@ -62,10 +60,12 @@
                                     Sign Up
                                 </button>
                             </div>
-                            <div class="mb-3">
-                                <h1 class="text-xs font-semibold">OR</h1>
+                            <div class="mb-3 flex justify-center items-center gap-2">
+                                <h1 class="text-xs font-semibold">Already have account?</h1>
+                                <a href="{{ route('index') }}" class="text-blue-500 text-xs border-b-2 border-blue-500">Login here</a>
                             </div>
-                            <div class="flex gap-2 justify-center">
+
+                            {{-- <div class="flex gap-2 justify-center">
                                 <div class="mb-2">
                                     <a href=""
                                         class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 w-full overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"><span
@@ -88,11 +88,13 @@
                                         </span>
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
 
                 </div>
+                <img src="{{ asset('assets/poto/signup.jpg') }}" alt="" srcset=""
+                    class="h-52 w-full object-cover lg:w-1/2 lg:h-screen">
             </div>
         </div>
     </section>

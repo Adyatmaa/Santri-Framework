@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\MonthlyUsersChart;
 use App\Models\musrif;
 use App\Models\santri;
 use App\Models\userLogon;
@@ -14,9 +15,14 @@ use function Laravel\Prompts\select;
 
 class PageController extends Controller
 {
-    public function dashboard()
+    function index()  
     {
-        return view('admin.dashboard');
+        return view('index');
+    }
+
+    public function dashboard(MonthlyUsersChart $monthlyUsersChart)
+    {
+        return view('admin.dashboard', ['chart' => $monthlyUsersChart->build()]);
     }
 
     public function dashboardS()

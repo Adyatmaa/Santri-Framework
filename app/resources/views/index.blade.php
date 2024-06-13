@@ -48,7 +48,7 @@
                                             Sign Up
                                         </span></a>
                                 </div>
-                                <div class="mb-2">
+                                {{-- <div class="mb-2">
                                     <a href="{{ Route('dashboard') }}"
                                         class="relative inline-flex items-center justify-center w-full p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"><span
                                             class="relative p-2 w-full transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -61,7 +61,7 @@
                                             class="relative p-2 w-full transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                             Santri
                                         </span></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </form>
                     </div>
