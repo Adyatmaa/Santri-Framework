@@ -12,15 +12,6 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function pageTalim()
-    {
-        return view('admin.talim');
-    }
-
-    public function pageTashih()
-    {
-        return view('admin.tashih');
-    }
 
     public function pageUstadz()
     {

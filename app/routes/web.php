@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SantriController;
-use Illuminate\Routing\RedirectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,16 +28,16 @@ Route::post('logging-in', [PageController::class, 'loggingIn'])->name('loggingIn
 // admin musrif
 Route::group(['middleware' => 'checkrole:0'], function () {
     Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
-    
+
     Route::get('mahasantri', [AdminController::class, 'pageSantri'])->name('pageSantri');
-    
+
     Route::get('musrif', [AdminController::class, 'pageMusrif'])->name('pageMusrif');
-    
+
     Route::get('ustadz', [AdminController::class, 'pageUstadz'])->name('pageUstadz');
     Route::post('add-ustadz', [AdminController::class, 'addUstadz'])->name('addUstadz');
     Route::put('edit-ustadz/{id}', [AdminController::class, 'updateUstadz'])->name('updateUstadz');
     Route::delete('delete-ustadz/{id}', [AdminController::class, 'delUstadz'])->name('delUstadz');
-    
+
     Route::get('kegiatan', [AdminController::class, 'pageKegiatan'])->name('pageKegiatan');
     Route::post('add-kegiatan', [AdminController::class, 'addKegiatan'])->name('addKegiatan');
     Route::put('edit-kegiatan/{id}', [AdminController::class, 'updateKegiatan'])->name('updateKegiatan');
@@ -55,6 +54,8 @@ Route::group(['middleware' => 'checkrole:0'], function () {
 Route::group(['middleware' => 'checkrole:1'], function () {
     Route::get('dashboards', [SantriController::class, 'dashboardS'])->name('dashboardS');
     Route::post('absen', [SantriController::class, 'absen'])->name('absen');
+    
+    Route::get('/santri/check-absen/{jadwal_id}/{santri_id}', [SantriController::class, 'cekAbsen'])->name('santri.check_absen');
 });
 
 // 

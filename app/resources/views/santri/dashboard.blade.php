@@ -87,6 +87,8 @@
             </div>
         </section>
     @endforeach
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var absenButtons = document.querySelectorAll('[data-modal-toggle="absen-modal"]');
@@ -108,6 +110,38 @@
                     modal.querySelector('input[name="kelas"]').value = kelas;
                     modal.querySelector('input[name="waktu"]').value = waktu;
                     modal.querySelector('input[name="santri"]').value = santri;
+
+                    // Kirim AJAX request untuk memeriksa absensi
+                    axios.get(`/santri/check-absen/${id}/${santri}`)
+                        .then(function(response) {
+                            var sudahAbsen = response.data.sudahAbsen;
+
+                            // Memeriksa dan mengubah teks tombol berdasarkan status absensi
+                            var submitButton = modal.querySelector('button[type="submit"]');
+                            console.log(sudahAbsen);
+                            if (sudahAbsen) {
+                                submitButton.textContent = 'Anda sudah absen';
+                                submitButton.classList.remove('bg-green-500',
+                                    'hover:bg-green-600', 'focus:ring-green-300');
+                                submitButton.classList.add('bg-gray-400', 'cursor-not-allowed');
+                                submitButton.disabled = true;
+                                console.log('sudah');
+                            } else {
+                                submitButton.textContent = 'Hadirun';
+                                submitButton.classList.remove('bg-gray-400',
+                                    'cursor-not-allowed');
+                                submitButton.classList.add('bg-green-500', 'hover:bg-green-600',
+                                    'focus:ring-green-300');
+                                submitButton.disabled = false;
+                                console.log('belum');
+                            }
+                            console.log('try');
+
+                        })
+                        .catch(function(error) {
+                            console.log('catch');
+                            console.error('Error checking absen:', error);
+                        });
                 });
             });
         });

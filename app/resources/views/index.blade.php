@@ -17,9 +17,7 @@
                 <div class="flex flex-col items-center justify-center my-6 lg:mx-auto">
                     <div class="text-center w-[80%] lg:w-full">
                         <h1 class="text-3xl font-bold mb-1 lg:mb-4 lg:text-5xl">Welcome Back!</h1>
-                        <p class="text-xs font-medium text-gray-500 lg:text-sm">Silahkan login terlebih dahulu, atau
-                            login
-                            sebagai admin</p>
+                        <p class="text-xs font-medium text-gray-500 lg:text-sm">Silahkan login terlebih dahulu</p>
                         <form action="{{ route('loggingIn') }}" method="POST" class="pt-10">
                             @csrf
                             @method('POST')
