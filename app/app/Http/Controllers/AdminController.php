@@ -7,6 +7,7 @@ use App\Models\kegiatan;
 use App\Models\musrif;
 use App\Models\santri;
 use App\Models\ustadz;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -104,9 +105,11 @@ class AdminController extends Controller
     public function pageJadwal()
     {
         $record = jadwal::with('kegiatan', 'musrif', 'ustadz')->get();
+        
         $ustad = ustadz::all();
         $musrif = musrif::all();
         $kegiatan = kegiatan::all();
+        
         // dd($record);
         return view('admin.jadwal', compact('record', 'ustad', 'musrif', 'kegiatan'));
     }

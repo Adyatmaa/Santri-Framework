@@ -25,11 +25,6 @@ class PageController extends Controller
         return view('admin.dashboard', ['chart' => $monthlyUsersChart->build()]);
     }
 
-    public function dashboardS()
-    {
-        return view('santri.dashboard');
-    }
-
     public function signUp()
     {
         return view('signUp');

@@ -53,10 +53,8 @@ Route::group(['middleware' => 'checkrole:0'], function () {
 
 // user santri
 Route::group(['middleware' => 'checkrole:1'], function () {
-    Route::get('dashboards', [PageController::class, 'dashboardS'])->name('dashboardS');
-
-    Route::get('santri-talim', [SantriController::class, 'pageTalim'])->name('santri.pageTalim');
-    Route::get('santri-tashih', [SantriController::class, 'pageTashih'])->name('santri.pageTashih');
+    Route::get('dashboards', [SantriController::class, 'dashboardS'])->name('dashboardS');
+    Route::post('absen', [SantriController::class, 'absen'])->name('absen');
 });
 
 // 

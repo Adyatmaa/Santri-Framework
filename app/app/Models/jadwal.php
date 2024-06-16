@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,6 +35,17 @@ class jadwal extends Model
     public function absen()
     {
         return $this->hasMany(absen::class);
+    }
+
+    public function getFormattedWaktuAttribute()
+    {
+        if (!isset($this->attributes['waktu'])) {
+            return null; // Mengembalikan null jika waktu tidak ada
+        }
+
+        return Carbon::parse($this->attributes['waktu'])
+            ->timezone('Asia/Jakarta')
+            ->format('d-m-Y H:i:s');
     }
 
     //jadwal belongsto kegiatan

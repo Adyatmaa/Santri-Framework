@@ -14,10 +14,16 @@ class santri extends Model
         'nim',
         'nama',
         'mabna',
+        'log_on_id',
     ];
 
     public function absen()
     {
         return $this->hasMany(absen::class);
+    }
+
+    public function logon()
+    {
+        return $this->belongsTo(User::class, 'log_on_id');
     }
 }

@@ -25,4 +25,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(role::class, 'role_id');
     }
+
+    public function santri()
+    {
+        return $this->belongsTo(santri::class);
+    }
 }
