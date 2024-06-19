@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.santri')
 @section('content')
     <section>
         <p class="mb-10">Profile Page</p>
 
-        @foreach ($musrif as $row)
+        @foreach ($santri as $row)
             <div class="relative w-6/12 overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <tbody>

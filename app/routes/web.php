@@ -28,6 +28,7 @@ Route::post('logging-in', [PageController::class, 'loggingIn'])->name('loggingIn
 // admin musrif
 Route::group(['middleware' => 'checkrole:0'], function () {
     Route::get('dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('profile', [AdminController::class, 'profile'])->name('profile');
 
     Route::get('mahasantri', [AdminController::class, 'pageSantri'])->name('pageSantri');
 
@@ -53,8 +54,9 @@ Route::group(['middleware' => 'checkrole:0'], function () {
 // user santri
 Route::group(['middleware' => 'checkrole:1'], function () {
     Route::get('dashboards', [SantriController::class, 'dashboardS'])->name('dashboardS');
+    Route::get('profiles', [SantriController::class, 'profiles'])->name('profiles');
     Route::post('absen', [SantriController::class, 'absen'])->name('absen');
-    
+
     Route::get('/santri/check-absen/{jadwal_id}/{santri_id}', [SantriController::class, 'cekAbsen'])->name('santri.check_absen');
 });
 

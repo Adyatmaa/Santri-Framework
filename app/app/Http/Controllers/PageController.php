@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Charts\MonthlyUsersChart;
+use App\Models\absen;
 use App\Models\musrif;
 use App\Models\santri;
 use App\Models\userLogon;
@@ -15,14 +16,18 @@ use function Laravel\Prompts\select;
 
 class PageController extends Controller
 {
-    function index()  
+    function index()
     {
         return view('index');
     }
 
     public function dashboard(MonthlyUsersChart $monthlyUsersChart)
     {
-        return view('admin.dashboard', ['chart' => $monthlyUsersChart->build()]);
+        $absen = absen::with('jadwal.kegiatan', 'jadwal.musrif', 'jadwal.ustadz', 'santri')->orderBy('jadwal_id')->get();
+        
+        $chart = $monthlyUsersChart->build();
+
+        return view('admin.dashboard', compact('absen', 'chart'));
     }
 
     public function signUp()

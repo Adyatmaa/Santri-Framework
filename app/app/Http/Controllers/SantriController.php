@@ -51,4 +51,12 @@ class SantriController extends Controller
             'sudahAbsen' => $sudahAbsen,
         ]);
     }
+
+    public function profiles()
+    {
+        $current = Auth::user()->id;
+        $santri = santri::where('log_on_id', $current)->get();
+
+        return view('santri.profile', compact('santri'));
+    }
 }

@@ -9,6 +9,7 @@ use App\Models\santri;
 use App\Models\ustadz;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -96,11 +97,11 @@ class AdminController extends Controller
     public function pageJadwal()
     {
         $record = jadwal::with('kegiatan', 'musrif', 'ustadz')->get();
-        
+
         $ustad = ustadz::all();
         $musrif = musrif::all();
         $kegiatan = kegiatan::all();
-        
+
         // dd($record);
         return view('admin.jadwal', compact('record', 'ustad', 'musrif', 'kegiatan'));
     }
@@ -162,5 +163,13 @@ class AdminController extends Controller
     public function pageAddTalim()
     {
         return view('admin.form.addTalim');
+    }
+
+    public function profile()
+    {
+        $current = Auth::user()->id;
+        $musrif = musrif::where('log_on_id', $current)->get();
+
+        return view('admin.profile', compact('musrif'));
     }
 }

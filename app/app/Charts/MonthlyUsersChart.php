@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\absen;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class MonthlyUsersChart
@@ -15,11 +16,23 @@ class MonthlyUsersChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
+        $absensi = absen::with('jadwal.kegiatan')
+            ->get()
+            ->groupBy('jadwal.kegiatan.nama')
+            ->map(function ($group) {
+                return $group->count();
+            });
+
+        // Mengonversi data menjadi array untuk digunakan pada chart
+        $jadwalIds = $absensi->keys()->toArray();
+        $counts = $absensi->values()->toArray();
+        // dd($counts);
+
+        // Membuat chart menggunakan data dari database
         return $this->chart->barChart()
-            ->setTitle('San Francisco vs Boston.')
-            ->setSubtitle('Wins during season 2021.')
-            ->addData('San Francisco', [6, 9, 3, 4, 10, 8])
-            ->addData('Boston', [7, 3, 8, 2, 6, 4])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
+            ->setTitle('Presensi per Jadwal')
+            ->setSubtitle('Jumlah Presensi Berdasarkan Jadwal')
+            ->addData('Jumlah Presensi Mahasantri', $counts)
+            ->setXAxis($jadwalIds);
     }
 }

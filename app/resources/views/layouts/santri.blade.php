@@ -51,7 +51,7 @@
                         </div>
                         <ul class="py-1" role="none">
                             <li>
-                                <a href="#"
+                                <a href="{{ route('profiles') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                     role="menuitem">Profile</a>
                             </li>
@@ -79,8 +79,7 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="{{ route('dashboardS') }}"
-                    class="flex items-center p-2 text-gray-900 rounded-lg group">
+                <a href="{{ route('dashboardS') }}" class="flex items-center p-2 text-gray-900 rounded-lg group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <path
