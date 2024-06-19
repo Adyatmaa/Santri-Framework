@@ -62,6 +62,3 @@ Route::group(['middleware' => 'checkrole:1'], function () {
 
 // 
 Route::post('logout', [PageController::class, 'logout']);
-// Route::group(['middleware' => 'checkrole:1,2'], function () {
-//     Route::get('redirect', [RedirectController::class, 'cek']);
-// });
