@@ -45,7 +45,7 @@ class jadwal extends Model
 
         return Carbon::parse($this->attributes['waktu'])
             ->timezone('Asia/Jakarta')
-            ->format('d-m-Y H:i:s');
+            ->format('l, H:i');
     }
 
     //jadwal belongsto kegiatan
