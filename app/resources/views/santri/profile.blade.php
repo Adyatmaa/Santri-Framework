@@ -1,7 +1,7 @@
 @extends('layouts.santri')
 @section('content')
     <section>
-        <p class="mb-10">Profile Page</p>
+        <p class="mb-10">Your Profile Page</p>
 
         @foreach ($santri as $row)
             <div class="relative w-6/12 overflow-x-auto shadow-md sm:rounded-lg">
