@@ -82,27 +82,30 @@
                                 {{ $item->ruang }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->waktu }} WIB
+                                {{ $item->formatted_waktu }} WIB
                             </td>
-                            <td class="flex px-6 py-4">
-                                <button type="button"
-                                    class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline"
-                                    data-modal-target="edit-modal" data-modal-toggle="edit-modal"
-                                    data-modal-show="edit-modal" data-id="{{ $item->id }}"
-                                    data-kegiatan-id="{{ $item->kegiatan_id }}" data-kegiatan="{{ $item->kegiatan->nama }}"
-                                    data-musrif-id="{{ $item->musrif_id }}" data-musrif="{{ $item->musrif->nama }}"
-                                    data-ustadz-id="{{ $item->ustadz_id }}" data-ustadz="{{ $item->ustadz->nama }}"
-                                    data-kelas="{{ $item->kelas }}" data-ruang="{{ $item->ruang }}"
-                                    data-waktu="{{ $item->waktu }}">
-                                    Edit
-                                </button>
-                                <form action="{{ route('delJadwal', ['id' => $item->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                        Delete
+                            <td class="px-6 py-4">
+                                <div class="items-center">
+                                    <button type="button"
+                                        class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline"
+                                        data-modal-target="edit-modal" data-modal-toggle="edit-modal"
+                                        data-modal-show="edit-modal" data-id="{{ $item->id }}"
+                                        data-kegiatan-id="{{ $item->kegiatan_id }}"
+                                        data-kegiatan="{{ $item->kegiatan->nama }}"
+                                        data-musrif-id="{{ $item->musrif_id }}" data-musrif="{{ $item->musrif->nama }}"
+                                        data-ustadz-id="{{ $item->ustadz_id }}" data-ustadz="{{ $item->ustadz->nama }}"
+                                        data-kelas="{{ $item->kelas }}" data-ruang="{{ $item->ruang }}"
+                                        data-waktu="{{ $item->waktu }}">
+                                        Edit
                                     </button>
-                                </form>
+                                    <form action="{{ route('delJadwal', ['id' => $item->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

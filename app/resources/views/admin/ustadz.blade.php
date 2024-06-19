@@ -55,21 +55,23 @@
                             <td class="px-6 py-4">
                                 {{ $row->nama }}
                             </td>
-                            <td class="flex px-6 py-4">
-                                <button type="button"
-                                    class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline"
-                                    data-modal-target="edit-modal" data-modal-toggle="edit-modal"
-                                    data-modal-show="edit-modal" data-nama="{{ $row->nama }}"
-                                    data-id="{{ $row->id }}">
-                                    Edit
-                                </button>
-                                <form action="{{ route('delUstadz', ['id' => $row->id]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                        Delete
+                            <td class="px-6 py-4">
+                                <div class="items-center">
+                                    <button type="button"
+                                        class="font-medium text-blue-600 mx-2 dark:text-blue-500 hover:underline"
+                                        data-modal-target="edit-modal" data-modal-toggle="edit-modal"
+                                        data-modal-show="edit-modal" data-nama="{{ $row->nama }}"
+                                        data-id="{{ $row->id }}">
+                                        Edit
                                     </button>
-                                </form>
+                                    <form action="{{ route('delUstadz', ['id' => $row->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline">
+                                            Delete
+                                        </button>
+                                    </form>
+                                    </diFv>
                             </td>
                         </tr>
                     @endforeach
